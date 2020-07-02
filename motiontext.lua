@@ -27,9 +27,9 @@ function Draw3DTextPermanent(params)
                 local distance = GetDistanceBetweenCoords(p.x, p.y, p.z, params.xyz.x,params.xyz.y,params.xyz.z, 1)
                 local scale = (1 / distance) * (params.perspectiveScale or default.perspectiveScale)
                 local fov = (1 / GetGameplayCamFov()) * 75
-                local scale = scale * fov
+                local scale = scale * fov * (params.text.scaleMultiplier or default.text.scaleMultiplier)
                 if onScreen then
-                    SetTextScale(tonumber(params.text.scaleMultiplier*0.0), tonumber(0.35 * (params.text.scaleMultiplier or default.text.scaleMultiplier)))
+                    SetTextScale(0.0, scale)
                     SetTextFont(params.text.font or default.text.font)
                     SetTextProportional(true)
                     SetTextColour(params.text.rgb[1], params.text.rgb[2], params.text.rgb[3], 255)
